@@ -15,8 +15,9 @@
     <div id="messages"></div>
 
     <script type="text/javascript">
-        let url = `ws://${window.location.host}/ws/socket-server/`
-
+        //let url = `ws://${window.location.host}/ws/socket-server/`
+        const roomName = "{{ room_name }}";  // El nombre de la sala se pasa desde Django
+        let url = `ws://${window.location.host}/ws/socket-server/${roomName}/`;
     
         const chatSocket = new WebSocket(url)
     
