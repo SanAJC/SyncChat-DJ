@@ -1,39 +1,41 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
-from django.contrib.auth import get_user_model
-from .models import Chat, Message
+from .models import Chat, Message 
+from django.contrib.auth.models import User
+from rest_framework_simplejwt.tokens import UntypedToken
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from channels.exceptions import DenyConnection
 
-User = get_user_model()
 
 class ChatConsumer(WebsocketConsumer):
 
     def connect(self):
         #self.room_group_name = 'test'
-        # Obtener el nombre de la sala desde la URL
-        self.room_group_name = f'chat_{self.scope["url_route"]["kwargs"]["room_name"]}'
+       
+        token = self.scope['query_string'].decode().split('=')[1]
 
         try:
-            self.chat = Chat.objects.get(name=self.room_group_name)
-        except Chat.DoesNotExist:
-            # Si el chat no existe, cerrar la conexión
-            self.close()
-            return
-        
-        async_to_sync(self.channel_layer.group_add)(
-            self.room_group_name,
-            self.channel_name
-        )
+            UntypedToken(token)
+            # Obtener el nombre de la sala desde la URL
+            self.room_group_name = f'chat_{self.scope["url_route"]["kwargs"]["room_name"]}'
 
-        self.accept()
+            async_to_sync(self.channel_layer.group_add)(
+                self.room_group_name,
+                self.channel_name
+            )
+            self.accept()
+
+        except (InvalidToken, TokenError):
+            self.close()
 
     def receive(self,text_data):
         text_data_json=json.loads(text_data)
         message = text_data_json['message']
-        user_id = self.scope['user'].id  # Obtener el ID del usuario actual
+        user_id = self.scope['user'].id  
 
         # Guardar el mensaje en la base de datos
-        chat = Chat.objects.get(name=self.room_group_name)  # Obtener el chat correspondiente
+        chat = Chat.objects.get(name=self.room_group_name)  
         user = User.objects.get(id=user_id)
         Message.objects.create(chat=chat, user=user, content=message)
 
