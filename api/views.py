@@ -6,10 +6,14 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.exceptions import AuthenticationFailed
+from .models import Chat
 
 def home(request):
     return render(request,'chat/index.html')
 
+def chat_rooms(request):
+    rooms = Chat.objects.all()
+    return render(request, 'chat/chat_rooms.html', {'rooms': rooms})
 
 def room(request, room_name):
     access_token = request.session.get('access_token')
