@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Registro</h1>
-    <h2>Registro</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrar</button>
-    </form>
-    <p><a href="{% url 'login' %}">Iniciar sesión</a></p>
+    <div class="fondo">
+        <header>
+            <div class="logo">SyncChat</div>
+            <ul class="menu">
+                <a href="{% url "inicio"%}"><li>Inicio</li></a>
+                <a href="{% url "login"%}"><li>Ingresar</li></a>
+                <a href="{% url "chat_rooms"%}"><li>Chat</li></a>
+            </ul>
+            <div class="bmenu">Menú</div>
+        </header>
+
+        <div class="login-container-r">
+            <div class="login-box-r">
+                <h2>Bienvenido de Regreso</h2>
+                <form method="post" action="{% url 'registro' %}">
+                    {% csrf_token %}
+                    <div class="input-container-r">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-container-r">
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit">registrarse</button>
+                    <p>Aca te puedes registrar</p>
+                </form>
+            
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

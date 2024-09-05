@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: contain; 
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 60px;
+    padding: 0 5%; 
+}
+a{
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    color: white;
+    font-size: 1.2em; 
+    cursor: pointer;
+}
+
+.bmenu {
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1em;
+}
+
+.parte-alta {
+    background-image: url('../images/fondo1def.svg');
+    background-size: cover; 
+    background-position: center;
+    height: 800px;
+    position: relative;
+}
+
+.hero {
+    color: white;
+    text-align: left; 
+    padding: 15vh 0 0 12rem; 
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    max-width: 800px;
+    margin: 0;
+}
+
+.content {
+    padding-left: 12rem; 
+    text-align: left;
+    color: black;
+    position: absolute;
+    bottom: 0; 
+    width: 100%; 
+}
+
+.content h2 {
+    font-size: 2em;
+    margin-top: 20px; 
+}
+
+.content p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0;
+    line-height: 1.5em;
+}
+
+.parte-baja {
+    height: 800px;
+    background-image: url('../images/fondo2def.svg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.content-bajo {
+    padding-left: 12rem;
+    text-align: left;
+    color: black;
+    position: absolute;
+    top: 0; 
+    width: 100%;
+}
+
+.content-bajo h2 {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+.content-bajo p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0;
+
+}
+
+footer {
+    color: white;
+    text-align: left; 
+    padding: 20px;
+    position: absolute;
+    right: 0; 
+    bottom: 40px; 
+    width: 800px;
+    padding-left: 20px; 
+}
+
+footer p {
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.social-icons {
+    position: absolute;
+    right: 0; 
+    bottom: 0px; 
+    display: flex;
+    justify-content: flex-end; 
+    padding-right: 8rem; 
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 0 10px 0 0; 
+}
+
+.fondo{
+    height: 100%;
+    background-image: url('../images/fondo1def.svg');
+    background-size: cover; 
+    background-position: center;
+    height: 800px;
+    position: relative;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+
+}
+
+.login-box {
+    height: 350px;
+    width: 400px;
+    background-color: #C493FF;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 15px 0px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-box h2 {
+    margin-bottom: 15px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.input-container {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+.input-container input,
+button {
+    width: 100%;
+    padding: 10px; 
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 8px 5px rgba(0, 0, 0, 0.4);
+    font-size: 0.9rem;
+    box-sizing: border-box; 
+}
+
+button {
+    background-color: #845EC2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #7C3AED;
+}
+
+p {
+    padding-top: 10px;
+    margin-top: 10px;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+p a {
+    color: #8B5CF6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.social-login {
+    margin-top: 15px;
+}
+
+.social-icons img {
+    margin: 0 8px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.login-container-r {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.login-box-r {
+    height: 360px;
+    width: 380px;
+    background-color: #C493FF;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 15px 0px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-box-r h2 {
+    margin-bottom: 15px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.input-container-r {
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.input-container-r label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+.input-container-r input,
+button {
+    width: 100%;
+    padding: 10px; 
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 8px 5px rgba(0, 0, 0, 0.4);
+    font-size: 0.9rem;
+    box-sizing: border-box; 
+}
+
+button {
+    background-color: #845EC2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #7C3AED;
+}
+
+p {
+    margin-top: 10px;
+    color: #000;
+    font-size: 0.9rem;
+}
+
+p a {
+    color: #8B5CF6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.social-login {
+    margin-top: 15px;
+}
+
+.social-icons img {
+    margin: 0 8px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.chat-fondo{
+    height: 100%;
+    background-image: url('../images/fondo1def.svg');
+    background-size: cover; 
+    background-position: center;
+    height: 1500px;
+    position: relative;
+}
+
+
+
+
+
+
+.chat-container{
+    margin: 50px;
+    margin-left: 150px ;
+    width: 80%;
+    height: 800px;
+    display: flex;
+    background-color: #FEFEDF;
+    border-radius: 18px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+}
+
+.user-list {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #FEFEDF;
+    border-right: 2px solid #E0E0E0;
+    margin-right: 3px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-status {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.online {
+    background-color: #845EC2;
+}
+
+.offline {
+    background-color: #C4C4C4;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.user-online {
+    font-size: 12px;
+    color: #808080;
+}
+
+.chat-window {
+    width: 80%;
+    padding: 20px;
+    background-color: #E6D7FF;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-header {
+    background-color: #E0B0FF;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    flex-flow: column;
+    background-color: #D1B3FF;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    background-color: #A76ED6;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.chat-input {
+    display: flex;
+    background-color: #845EC2;
+    padding: 10px;
+    border-radius: 20px;
+}
+.chat-input form{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+}
+
+.chat-input input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    margin-right: 10px;
+}
+
+/*
+.dataUser{
+    width: 50%;
+    height: auto;
+    background-color: #FEFEDF;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.dataUser strong{
+    font-size: 20px;
+    color: #845EC2;
+}
+
+.dataUser p{
+    font-size: 20px;
+    color: #000;
+}
+*/
+.local-message {
+    text-align: right;
+    background-color: #845EC2;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    width: 50%;  /* Ajusta el tamaño si es necesario */
+}
+
+.remote-message {
+    text-align: left;
+    background-color: #A76ED6;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: auto;
+    width: 50%;  /* Ajusta el tamaño si es necesario */
+}
+img{
+    width: 40px;
+    height: 40px;
+}
+
+footer p {
+    text-align: left;
+    font-size: 14px;
+    margin: 50px 20px;
+    color: #000000;
+}

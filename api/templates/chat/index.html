@@ -1,11 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Syschat</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Inicio</h1>
+    <div class="parte-alta">
+        <header>
+            <div class="logo">SyncChat</div>
+        <ul class="menu">
+                <a href="{% url "inicio"%}"><li>Inicio</li></a>
+                <a href="{% url "login"%}"><li>Ingresar</li></a>
+                <a href="{% url "chat_rooms"%}"><li>Chat</li></a>
+            </ul>
+            <div class="bmenu">Menú</div>
+        </header>
+
+        <section class="hero">
+            <h1>La conversación sigue, estés donde estés.</h1>
+        </section>
+
+        <section class="content">
+            <h2>Información</h2>
+            <p>
+                Bienvenido a SyncChat, el lugar donde la conversación nunca se detiene.           
+            </p>
+        </section>
+    </div>
+    <div class="parte-baja">
+        <section class="content-bajo">
+            <p>
+                Nuestra plataforma está diseñada para ofrecerte una experiencia de chat fluida y confiable,
+                asegurando que tus mensajes lleguen siempre a su destino, incluso cuando el servidor principal no lo hace. 
+                Ya sea para trabajo, estudio o diversión, SyncChat mantiene a todos conectados, sin importar las circunstancias.
+                Únete y descubre cómo es hablar sin interrupciones.</p>
+        </section>
+        <footer>
+            <p>¿Tienes preguntas o necesitas ayuda? Nuestro equipo de soporte está aquí para asistirte en cualquier momento. 
+                No dudes en contactarnos a través de nuestras redes sociales o envíanos un mensaje directo. 
+                Siguenos para estar al día con las últimas actualizaciones, tips y novedades de SyncChat. 
+                ¡Nos encantaría escuchar tu opinión y ayudarte a tener la mejor experiencia posible!</p>
+            <div class="social-icons">
+                <a href="#"><img src="{% static 'images/facebook.svg' %}" alt="Facebook"></a>
+                <a href="#"><img src="{% static 'images/twitter.svg' %}" alt="Twitter"></a>
+                <a href="#"><img src="{% static 'images/tiktok.svg' %}" alt="TikTok"></a>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>

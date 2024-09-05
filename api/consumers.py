@@ -18,7 +18,17 @@ class ChatConsumer(WebsocketConsumer):
         try:
             UntypedToken(token)
             # Obtener el nombre de la sala desde la URL
-            self.room_group_name = f'chat_{self.scope["url_route"]["kwargs"]["room_name"]}'
+            self.room_group_name = self.scope["url_route"]["kwargs"]["room_name"]
+            #self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
+            #self.room_group_name = "chat_%s" % self.room_name
+
+            # Verifica la existencia de la sala
+            try:
+                Chat.objects.get(name=self.room_group_name)
+            except Chat.DoesNotExist:
+                print(f'Chat room {self.room_group_name} does not exist')
+                self.close()
+                return
 
             async_to_sync(self.channel_layer.group_add)(
                 self.room_group_name,
@@ -43,15 +53,18 @@ class ChatConsumer(WebsocketConsumer):
             self.room_group_name,
             {
                 'type':'chat_message',
-                'message':message
+                'message':message,
+                'username': user.username 
             }
             
         )
     
     def chat_message(self,event):
         message=event['message']
+        username = event['username'] 
 
         self.send(text_data=json.dumps({
             'type':'chat',
-            'message':message
+            'message':message,
+            'username': username
         }))

@@ -28,11 +28,14 @@ def room(request, room_name):
     except AuthenticationFailed:
         return redirect('login')
 
+    # Obtener todas las salas de chat para mostrar el listado
+    rooms = Chat.objects.all()
+
     return render(request, 'chat/room.html', {
         'room_name': room_name,
-        'access_token': access_token
+        'access_token': access_token,
+        'rooms': rooms  
     })
-
 
 
 def register(request):

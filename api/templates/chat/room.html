@@ -1,53 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Chat</h1>
-    <h2>Bienvenido a la sala: {{ room_name }}</h2>
+{% extends "chat/chat_rooms.html" %}
 
-    <p>Token de acceso: {{ access_token }}</p>
-
-    <form id="form">
-        <input type="text" name="message"/>
-    </form>
-
-    <div id="messages"></div>
+{% block chat_window %}
+    <div class="chat-header">
+        <span class="chat-user">Sala: {{ room_name }}</span>
+    </div>
+    <div class="chat-messages" id="messages">
+        <!-- Los mensajes del chat aparecerán aquí -->
+    </div>
+    <div class="chat-input">
+        <form id="form">
+            <input type="text" name="message" placeholder="Escribe tu mensaje"/>
+            <button type="submit" id="boton">Enviar</button>
+        </form>
+    </div>
 
     <script type="text/javascript">
-        //let url = `ws://${window.location.host}/ws/socket-server/`
         const roomName = "{{ room_name }}";  // El nombre de la sala se pasa desde Django
         const accessToken = "{{ access_token }}";  // Obtenido desde Django
+        const localUsername = "{{ request.user.username }}";  // Nombre de usuario del local
+
+        
         let url = `ws://${window.location.host}/ws/socket-server/${roomName}/?token=${accessToken}`;
+        
 
-    
-        const chatSocket = new WebSocket(url)
-    
-        chatSocket.onmessage = function(e){
-            let data = JSON.parse(e.data)
-            console.log('Data:',data)
+        const chatSocket = new WebSocket(url);
 
-            if(data.type === 'chat'){
-                let message = document.getElementById('messages')
+        chatSocket.onmessage = function(e) {
+            let data = JSON.parse(e.data);
+            console.log('Data:', data);
 
-                message.insertAdjacentHTML('beforeend',`<div>
+            if (data.type === 'chat') {
+                let messageElement = document.getElementById('messages');
+                let messageClass = (data.username === localUsername) ? 'local-message' : 'remote-message';
+            
+            messageElement.insertAdjacentHTML('beforeend', `
+                <div class="${messageClass}">
+                    <strong>${data.username}</strong>
                     <p>${data.message}</p>
-                    </div>`)
+                </div>
+            `);
+    
             }
-        }
+        };
 
-        let form =document.getElementById('form')
-        form.addEventListener('submit',(e)=>{
-            e.preventDefault()
-            let message = e.target.message.value
+        document.getElementById('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let message = e.target.message.value;
             chatSocket.send(JSON.stringify({
-                'message':message
-            }))
-            form.reset()
-        })
+                'message': message
+            }));
+            e.target.reset();
+        });
     </script>
-</body>
-</html>
+{% endblock %}

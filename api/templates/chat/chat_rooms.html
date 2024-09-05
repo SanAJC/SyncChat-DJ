@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salas de chats</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Salas de Chat Disponibles</h1>
-    <ul>
-        {% for room in rooms %}
-            <li>
-                <a href="{% url 'room' room.name %}">{{ room.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="chat-fondo">
+        <header>
+            <div class="logo">SyncChat</div>
+            <ul class="menu">
+                <a href="{% url "inicio" %}"><li>Inicio</li></a>
+                <a href="{% url "login" %}"><li>Ingresar</li></a>
+                <a href="{% url "chat_rooms" %}"><li>Chat</li></a>
+            </ul>
+            <div class="bmenu">Menú</div>
+        </header>
+        
+        <div class="chat-container">
+            <!-- Salas List -->
+            <div class="user-list">
+                {% for room in rooms %}
+                    <div class="user">
+                        <div class="user-status online"></div>
+                        <div class="user-name">
+                            <a href="{% url 'room' room.name %}">{{ room.name }}</a>
+                        </div>
+                        <div class="user-online">Online</div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-window">
+                {% block chat_window %}
+                <!-- Aquí se cargará el contenido dinámico de la sala -->
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            <p>¿Tienes preguntas o necesitas ayuda? Nuestro equipo de soporte está aquí para asistirte en cualquier momento.</p>
+        </footer>
+    </div>
 </body>
 </html>
