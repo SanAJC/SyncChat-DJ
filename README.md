@@ -40,7 +40,7 @@ SyncChat-DJ es una aplicación de chat en tiempo real construida con Django, Dja
 5. **Correr el servidor:**
   python manage.py runserver
 
-   
+##Vistas del programa
    
   
    
